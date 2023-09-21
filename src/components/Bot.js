@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import githubPng from './../img/github.png';
+import { Command } from './Command';
+export const Bot = ({ title, header, commands, img, note, badges, github }) => _jsxs("div", { className: 'bot', children: [_jsx("div", { className: 'title', children: _jsx("span", { children: title }) }), _jsx("div", { className: 'header', children: _jsx("span", { children: header }) }), _jsx("div", { children: _jsx("img", { src: img, alt: "" }) }), _jsx("div", { className: 'commands', children: commands.map((cmd, idx) => _jsx(Command, { title: cmd.title, header: cmd.header, synopsis: cmd.synopsis, badges: cmd.badges, cost: cmd.cost, example: cmd.example, data: cmd.data }, idx)) }), note && _jsx("div", { className: 'note', children: note }), _jsxs("div", { className: 'footer', children: [_jsx("div", { children: badges.map((badge, idx) => _jsx("img", { width: '16', height: '16', src: badge, alt: '' })) }), _jsx("div", { children: _jsx("a", { href: github, children: _jsx("img", { width: '25', height: '25', src: githubPng, alt: '' }) }) })] })] });
+//# sourceMappingURL=Bot.js.map
