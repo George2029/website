@@ -8,7 +8,7 @@ module.exports = {
 	entry: resolve('./src/index.tsx'),
 	output: {
 		path: resolve('./dist'),
-		filename: 'bundle.js',
+		filename: '[name].[contenthash].js',
 		clean: true,
 	},
 	devtool: 'source-map',
@@ -25,12 +25,22 @@ module.exports = {
 			favicon: join(resolve('./src/img'), 'favicon.ico')
     	}),
 		new MiniCssExtractPlugin({
-			filename: 'style.css'
+			filename: '[name].[contenthash].css'
 		}),
   	],
 	optimization: {
    		minimize: true,
    	 	minimizer: [new TerserPlugin()],
+	    runtimeChunk: 'single',
+     	splitChunks: {
+       		cacheGroups: {
+         		vendor: {
+           			test: /[\\/]node_modules[\\/]/,
+           			name: 'vendors',
+           			chunks: 'all',
+         		},
+       		},
+     	},
   	},
 	module: {
 		rules: [
@@ -52,12 +62,12 @@ module.exports = {
   				}
 			},
 			{
-				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
 				type: 'asset/resource',
 			},
       		{
         		test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        		type: 'asset/resource',
+				type: 'asset/resource',
       		}
 		]
 	},

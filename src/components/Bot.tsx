@@ -1,4 +1,4 @@
-import githubPng from './../img/github.png';
+import githubPng from './../img/github.webp';
 import {Command} from './Command';
 
 export const Bot = ({title, descr, header, commands, img, note, badges, github} : Bot ) => 

@@ -1,17 +1,18 @@
-import follower from './img/twitch/follower.png';
-import mod from './img/twitch/mod.png';
-import broadcaster from './img/twitch/broadcaster.png';
-import vip from './img/twitch/vip.png';
-import everyone from './img/twitch/everyone.png';
-import casinoPng from './img/botUsageExamples/gambler.png';
-import managerPng from './img/botUsageExamples/main-manager.png';
-import citationManagerPng from './img/botUsageExamples/citation-manager.png';
-import h3CalcPng from './img/botUsageExamples/game-utility.png';
-import mpcPng from './img/botUsageExamples/music-player.png';
+import follower from './img/twitch/follower.webp';
+import mod from './img/twitch/mod.webp';
+import broadcaster from './img/twitch/broadcaster.webp';
+import vip from './img/twitch/vip.webp';
+import everyone from './img/twitch/everyone.webp';
+import casinoPng from './img/botUsageExamples/gambler.webp';
+import managerPng from './img/botUsageExamples/main-manager.webp';
+import citationManagerPng from './img/botUsageExamples/citation-manager.webp';
+import h3CalcPng from './img/botUsageExamples/game-utility.webp';
+import mpcPng from './img/botUsageExamples/music-player.webp';
 export let data = [
     {
-        title: 'Casino',
+        title: 'Dealer',
         header: 'Play casino games in chat!',
+        descr: `A bot which handles gambling for points. Currently there are 2 games: 1 is pvp (vs another chat user) and the second game doesn't require a chat user to be playable: you can compete against the bot (dealer). Points are embedded currency which for some on-stream purchases (song requests, etc). Provides game statistics such winrate, total points score, top players`,
         commands: [
             {
                 title: '!poker',
@@ -56,8 +57,9 @@ export let data = [
         github: 'https://github.com/George2029/twitch-bot-gamer'
     },
     {
-        title: 'Music player',
+        title: 'Musician',
         header: `Change broadcaster's music!`,
+        descr: 'A bot which handles music on stream. Includes various commands for adding tracks to the queue. Viewers can examine the music library / check the queue via the bot.',
         commands: [
             {
                 title: '!play',
@@ -124,13 +126,14 @@ export let data = [
             },
         ],
         img: mpcPng,
-        note: 'Points-based management.',
+        note: 'All available music is stored locally. Points-based management.',
         badges: [follower],
         github: 'https://github.com/George2029/twitch-bot-music-player'
     },
     {
-        title: 'Citation manager',
+        title: 'Citationer',
         header: 'Manage channel text commands!',
+        descr: 'A bot which manages adding / refactoring plain-text commands. With the help of tagging, multiple quotes can be added to the same user. Outputs a random quote if tag is not specified.',
         commands: [
             {
                 title: '!cite',
@@ -170,13 +173,14 @@ export let data = [
             }
         ],
         img: citationManagerPng,
-        note: 'Considering the possible outcomes of incorrect synopsis of this bot, it better be for mods only.',
+        note: 'Prone to spam. Better be for mods only.',
         badges: [mod],
         github: 'https://github.com/George2029/twitch-bot-citation-manager'
     },
     {
-        title: `Gamer's utility`,
+        title: `Gamer`,
         header: 'Heroes 3 Calculator',
+        descr: 'This bot is multitool for a game which is in comes cases more convenient and surely faster to use than gui analogues',
         commands: [
             {
                 title: '!guard',
@@ -270,13 +274,14 @@ export let data = [
             },
         ],
         img: h3CalcPng,
-        note: `Due to command line interface, the calculator is limited, but the existing commands are quite easy, and what's more important, fast to use, which makes it valuable. New features can be added in the future`,
+        note: `New features can be added in the future`,
         badges: [everyone],
         github: 'https://github.com/George2029/twitch-bot-game-utility'
     },
     {
-        title: 'main-manager',
+        title: 'Manager',
         header: 'Stream manager',
+        descr: 'A bot which is in control of regular stream operations, such as points management, title changing and a help-command',
         commands: [
             {
                 title: '!title',

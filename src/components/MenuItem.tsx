@@ -8,7 +8,7 @@ type menuItem = {
 export const MenuItem = ({title, onClick} : menuItem) => { 
 	let link = `#${title}`;
 	return (
-	<HashLink smooth to={link}><div className='h-20 font-bold leading-[5rem] text-center' onClick={onClick}>
+	<HashLink smooth to={link}><div className='h-8 pl-2 font-bold leading-8' onClick={onClick}>
 		{title}
 	</div>
 	</HashLink>

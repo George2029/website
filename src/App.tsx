@@ -7,36 +7,37 @@ import {MenuItem} from './components/MenuItem';
 export let App = () => {
 
 	let [isMobileMenuHidden, setMobileMenuHidden] = useState(true);
+	let [theme, setTheme] = useState('light');
 	let menuClasses = `
-		relative 
 		${isMobileMenuHidden ? 
 			'h-0 overflow-hidden' : 
-			'h-auto'}
+			'fixed w-4/5 left-4 top-16 p-3'}
 		bg-white 
-		w-full
+		rounded-xl
 		text-myfiol
 		flex
 		flex-col
+		items-center
 
 		md:h-full 
 		md:flex-row 
-		md:bg-transparent
 		md:gap-2
 		md:justify-end
 
 		dark:bg-blue-950
+		md:bg-transparent
 		dark:md:bg-transparent
-		`;
-	let menuBckg = !isMobileMenuHidden ? `
-		top-16
+	`;
+
+	let menuBckg =  `
 		bg-black/80
 		z-10
 		w-screen
 		h-screen
-		fixed` : 
+		fixed
+		${isMobileMenuHidden ? 'hidden' : ''}
+	`;
 
-		''
-	;
 	let bckgClass=`
 		pattern-dots 
 		pattern-opacity-100 
@@ -53,14 +54,26 @@ export let App = () => {
 		${!isMobileMenuHidden ? 'fixed' : ''} 
 		`
 
+	if (localStorage.getItem('theme') === 'dark') {
+		if (theme !== 'dark') setTheme('dark');
+	} else if (localStorage.getItem('theme') === 'light') {
+		if (theme !== 'light') setTheme('light');
+	} else {
+		if(window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+			if (theme !== 'dark') setTheme('dark');
+		} else {
+			if (theme !== 'light') setTheme('light');
+		}
+	}
+	
 	return (
-	<div className=''>
+	<div className={theme}>
 		<div className={bckgClass}>
+				<div className={menuBckg}></div>
 				<div className='
 					h-16 
 					flex 
 					justify-between
-					drop-shadow-xl 
 					max-w-2xl
 					my-0
 					mx-auto
@@ -73,21 +86,75 @@ export let App = () => {
 						bg-contain 
 						bg-no-repeat 
 						bg-center 
-						bg-[url('./img/logo2.webp')]
+						bg-[url('./img/logo.webp')]
 						mx-2
+						relative
 					">
 					</div>
-					<div className={menuBckg}>
-						<div className={menuClasses}>
-							{[...Array(5)]
-								.map((el, idx)=>
-								<MenuItem 
-									key={idx} 
-									title={data[idx].title} 
-									onClick={()=>
-									setMobileMenuHidden(true)}
-								/>)
-							}
+					<div className={menuClasses}>
+						{[...Array(5)]
+							.map((el, idx)=>
+							<MenuItem 
+								key={idx} 
+								title={data[idx].title} 
+								onClick={()=>
+								setMobileMenuHidden(true)}
+							/>)
+						}
+						<div className='
+							mt-4 
+							flex 
+							pt-4 
+							w-full 
+							border-t 
+							gap-1
+							items-center
+							justify-center
+							border-myfiol
+							md:border-0
+							md:pt-0
+							md:mt-0
+						'>
+							<svg xmlns="http://www.w3.org/2000/svg" 
+								fill={theme === 'light' ? '#FFFF00' : ''}  
+								viewBox="0 0 24 24" 
+								strokeWidth={1.5} 
+								stroke="currentColor" 
+								className="w-7 h-7">
+  								<path strokeLinecap="round" 
+									strokeLinejoin="round" 
+									d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 
+										18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 
+											12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+							</svg>
+		
+							<div className='toggle flex items-center'>
+								<input type="checkbox" checked={theme==='dark'} 
+									id="toggle" />
+								<label htmlFor="toggle" onClick={()=>setTheme(theme=>{
+									if (theme === 'light') {
+										localStorage.setItem('theme', 'dark');
+										setTheme('dark');
+										return 'dark';
+									} else {
+										localStorage.setItem('theme', 'light');
+										setTheme('light');
+										return 'light';
+									}
+								})} />
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg" 
+								fill={theme === 'dark' ? '#FFFF00' : ''}  
+								viewBox="0 0 24 24" 
+								strokeWidth={1.5} 
+								stroke="currentColor" 
+								className="w-7 h-7">
+  								<path strokeLinecap="round" 
+									strokeLinejoin="round" 
+									d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 
+										0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 
+										12.75 21a9.753 9.753 0 009.002-5.998z" />
+							</svg>
 						</div>
 					</div>
 					<div className='
@@ -98,7 +165,6 @@ export let App = () => {
 						items-center
 						mx-2
 						relative
-						z-30
 
 						md:hidden
 					'>

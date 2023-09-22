@@ -1,14 +1,14 @@
-import follower from './img/twitch/follower.png';
-import mod from './img/twitch/mod.png';
-import broadcaster from './img/twitch/broadcaster.png';
-import vip from './img/twitch/vip.png';
-import everyone from './img/twitch/everyone.png';
+import follower from './img/twitch/follower.webp';
+import mod from './img/twitch/mod.webp';
+import broadcaster from './img/twitch/broadcaster.webp';
+import vip from './img/twitch/vip.webp';
+import everyone from './img/twitch/everyone.webp';
 
-import casinoPng from './img/botUsageExamples/gambler.png';
-import managerPng from './img/botUsageExamples/main-manager.png';
-import citationManagerPng from './img/botUsageExamples/citation-manager.png';
-import h3CalcPng from './img/botUsageExamples/game-utility.png';
-import mpcPng from './img/botUsageExamples/music-player.png';
+import casinoPng from './img/botUsageExamples/gambler.webp';
+import managerPng from './img/botUsageExamples/main-manager.webp';
+import citationManagerPng from './img/botUsageExamples/citation-manager.webp';
+import h3CalcPng from './img/botUsageExamples/game-utility.webp';
+import mpcPng from './img/botUsageExamples/music-player.webp';
 
 export let data = [
 	{
